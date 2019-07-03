@@ -68,7 +68,7 @@ if __name__ == '__main__':
 	dataset = get_training_dataset()
 	train(dataset, TRAIN_ITERATION, TRAIN_RATE, params)
 
-	print("[W1 -- W2 -- bais]")
+	print("[bais -- W1 -- W2]")
 	print(params)
 
 	# 模型预测结果输出

@@ -1,9 +1,6 @@
 # preceptron
 
 
-#def sigmoid(z):
-#	return 1 / (1 + np.exp(-z))
-
 def relu(input_value):
 	return 0.0 if input_value < 0.0 else 1.0
 
@@ -48,11 +45,14 @@ def get_training_dataset():
     # [偏置值，x1, x2, y]
 
     # dataset for AND
-    dataset = [[-1, 1, 1, 1], [-1, 0, 0, 0], [-1, 1, 0, 0], [-1, 0, 1, 0]]
+    # dataset = [[-1, 1, 1, 1], [-1, 0, 0, 0], [-1, 1, 0, 0], [-1, 0, 1, 0]]
 
     # dataset for OR
     #dataset = [[-1, 1, 1, 1], [-1, 0, 0, 0], [-1, 1, 0, 1], [-1, 0, 1, 1]]
-
+    
+    # dataset for XOR
+    # 模型无法收敛，训练失败
+    dataset = [[-1, 1, 1, 0], [-1, 0, 0, 0], [-1, 1, 0, 1], [-1, 0, 1, 1]]
 
     return dataset
 
@@ -62,6 +62,10 @@ if __name__ == '__main__':
 	TRAIN_ITERATION = 100
 	TRAIN_RATE = 0.01
 
+	W1_hist = []
+	W2_hist = []
+	b_hist = []
+	loss_hist = []
 	params = _init_params()
 	dataset = get_training_dataset()
 	train(dataset, TRAIN_ITERATION, TRAIN_RATE, params)
